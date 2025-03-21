@@ -1,23 +1,34 @@
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class library {
-    //Holds the music that is currently in the array list.
-    public static void main(String[] args){
-        ArrayList<String> music = new ArrayList<String>();
-        music.add("Happy Birthday");
-        music.add("In Bloom");
-        music.add("Creep");
-        System.out.println(music);
-
-        //Will allow users to choose what they want to do.
-        Scanner choice = new Scanner(System.in);
-        System.out.println("""
-                1)Add Song
-                2)Remove Song
-                3)Quit""");
-        System.out.println(choice);
-        String selection = choice.nextLine();
-        System.out.println("Selection: " + selection);
+    //initiating arraylist.
+    private ArrayList<String> music = new ArrayList<String>();
+    public void addSong(String music){
+        this.music.add(music);
+    }
+    //loop that runs the same amount of times as the length of choices.
+    public void display() {
+        for(int i = 0; i < music.size(); i++) {
+            System.out.print(music.get(i));
+        }
+    }
+    /*
+    function that gives users the ability to remove music
+    as long as it is contained in the list.
+    */
+    public void removeSong(String remove) {
+        if (music.contains(remove)) {
+            music.remove(remove);
+        }
+        //if it is not in the list display an error message.
+        else {
+            System.out.print("Error: Does not exist.");
+        }
+    }
+    //shuffles all music contained within the arraylist.
+    public void shuffleSong(String shuffle){
+        music.random();
     }
 }
+
+
